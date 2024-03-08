@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-# Assurez-vous que les autres modules sont correctement importés et configurés
 from modules.views import menu, hide_footer, login
 from modules.data_processing import data_insert_file, data_insert_manuel ,data_insert_correction, data_visualization, data_insert_spread, rates_calculation, users_management
 
@@ -11,7 +10,7 @@ def main():
         login()
     else:
         st.sidebar.title("Bienvenue " + st.session_state.get("users")['Prenom'])
-        image_path = './static/image/OIP.jpg'  # Assurez-vous que le chemin est correct
+        image_path = './static/image/OIP.jpg' 
         st.sidebar.image(image_path)
         choix = menu(options=["Spot", "Spreads", "Rates", 'Users'],
                      icons=['graph-up-arrow', 'bar-chart-line', 'currency-exchange', 'people'] ,
@@ -21,7 +20,7 @@ def main():
             case 0:
                 st.markdown('''<p style="font-size:35px;">MARKET RATES </p>''', unsafe_allow_html=True)
                 
-                # Utiliser des boutons radio pour le choix unique
+               
                 option = st.radio("Choisir une option :", 
                                   ("Insérer le fichier", "Insérer une devise manuellement", "Corriger une valeur", "Visualiser les données"),
                                   key='option')
